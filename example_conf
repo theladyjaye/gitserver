@@ -1,0 +1,3 @@
+port: 22
+driver: example
+host_key: /Users/aventurella/.ssh/sshd/ssh_host_rsa_key
