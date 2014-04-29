@@ -34,7 +34,7 @@ packages.append('twisted.plugins')
 setup(
     name='gitserver',
     version=gitserver.__version__,
-    description='',
+    description='git server',
     long_description=readme + '\n\n' + history,
     author='Adam Venturella <aventurella@gmail.com>',
     author_email='aventurella@gmail.com',
