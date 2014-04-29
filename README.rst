@@ -113,4 +113,14 @@ Start the server (in the foreground for example purposes) ::
 Omit, the `-n` argument to start daemonized.
 
 
+Ubuntu Requirements
+====================
+
+- python-dev (pyopenssl requires)
+- libffi-dev (pyopenssl requires)
+- libssl-dev (pyopenssl requires)
+
+
+
+
 

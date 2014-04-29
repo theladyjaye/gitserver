@@ -1,0 +1,5 @@
+PyYAML==3.10
+Twisted==13.2.0
+stevedore==0.14.1
+pyasn1==0.1.7
+pyOpenSSL==0.14
