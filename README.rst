@@ -26,16 +26,16 @@ Note that driver above corresponds to the name located in setup.py ::
 To use your own driver, which you should be doing as the example driver
 is completely wide open, simply author a new Python package, and create
 and entrey_point in your setup.py as defined above. The important parts
-are `example = gitserver.example`. Put another way,
-`name = path.to.python.module`.
+are ``example = gitserver.example``. Put another way,
+``name = path.to.python.module``.
 
-The keyword `name` is what is used in the configuration file. In the
+The keyword ``name`` is what is used in the configuration file. In the
 example entry_point above the `name` is **example**.
 
-The right side of the assignment, `path.to.python.module`
-is the python path to your module that will represent the `name`.
-In the example above it is represented as `gitserver.example`. Which
-means it will looking the package `gitserver` for the module `example.py`
+The right side of the assignment, ``path.to.python.module``
+is the python path to your module that will represent the ``name``.
+In the example above it is represented as ``gitserver.example``. Which
+means it will looking the package ``gitserver`` for the module ``example.py``
 
 The example provided in this package contains all of the 4 functions
 you must implement, they are enumerated here ::
@@ -45,10 +45,10 @@ you must implement, they are enumerated here ::
     def authenticate(credentials):
     def get_user_model(user_id):
 
-During `authentication` you **must** set `credentials.username` to a value
-that can be passed to `get_user_model(user_id)` in order to hydrate
-your custom user model. Which leads us to definiing your custom user
-model.
+During ``authentication`` you **must** set ``credentials.username``
+to a value that can be passed to ``get_user_model(user_id)`` in order
+to hydrate your custom user model. Which leads us to definiing your
+custom user model.
 
 Additionally, aside from implementing the 4 functions above, you must
 define your own user model, which can be anything you like. You will
