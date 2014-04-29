@@ -16,6 +16,7 @@ Example Configuration File:
     host_key: /path/to/private/rsa/key
 
 Note that driver above corresponds to the name located in setup.py ::
+
     entry_points={
         'gitserver.driver': [
             'example = gitserver.example',
