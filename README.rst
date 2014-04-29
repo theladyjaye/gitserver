@@ -60,28 +60,18 @@ receive this user model in the authorize function above ::
         self.userame = None
 
 
-The flow of the 4 required functions is as follows ::
+The flow of the 4 required functions ::
 
     1) authenticate(credentials) is invoked
 
     2) get_user_model(user_id) is invoked with the value of
        credentials.username that was set in authenticate(credentials)
 
-    3) repopath(reponame) is invoked. Lets assume this is running
-       on github and the following command is executed:
-       git clone git@github.com:aventurella/gitserver.git
-
-       reponame would then be 'aventurella/gitserver.git'
-
-       It is unlikely that this is an actual path on your filesystem
-       It is your job here to convert this path into the absolute path
-       on your filesystem where the repository can be located.
-
-    4) authorize(model, command, path)
+    3) authorize(model, command, path)
        This is the last invocation in the flow.
        - model: the result of get_user_model(user_id)
        - command: one of git-upload-pack or git-receive-pack
-       - path: the absolute path returned from repopath(reponame)
+       - path: the path of the requested operation
 
        You should return True or False here as to weather the
        'model' (aka user) is authorized to perform the requested
@@ -91,9 +81,33 @@ The flow of the 4 required functions is as follows ::
        In other words no one will be authorized. You will need to
        change this if you want this to be useful.
 
+       The path argument here, using a github.com url as an example:
+       git clone git@github.com:aventurella/gitserver.git would yield
+       the following path:
+
+       aventurella/gitserver.git
+
+       Keep in mind that this must also work over ssh:// so
+       git clone ssh://git@github.com:[port]/aventurella/gitserver.git
+       would yield the following path:
+
+       /aventurella/gitserver.git
+
+       The ssh version will come with a leading / the other will not.
+
+    4) repopath(reponame) is invoked. Lets assume this is running
+       on github and the following command is executed:
+       git clone git@github.com:aventurella/gitserver.git
+
+       reponame would then be 'aventurella/gitserver.git'
+
+       It is unlikely that this is an actual path on your filesystem
+       It is your job here to convert this path into the absolute path
+       on your filesystem where the repository can be located.
+
 Start the server (in the foreground for example purposes) ::
 
-    twistd -n -c /path/to/your/conf gitserver
+    twistd -n gitserver -c /path/to/your/conf
 
 
 Omit, the `-n` argument to start daemonized.

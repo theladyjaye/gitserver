@@ -98,7 +98,7 @@ class GitProtocol(protocol.Protocol):
     def displayWelcome(self):
         message = (
             'Hello %s! You have successfully authenticated but '
-            'we does not provide shell access.') \
+            'we do not provide shell access.') \
             % self.user.avatar.username
 
         self.displayMessage(message)
