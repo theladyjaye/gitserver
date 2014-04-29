@@ -176,6 +176,8 @@ def makeService(config):
     host_key = conf.get('host_key')
     driver_key = conf.get('driver', 'example')
 
+    log.msg('Using driver: \'%s\'' % driver_key)
+
     mgr = driver.DriverManager(
         namespace='gitserver.driver',
         name=driver_key,
@@ -184,7 +186,6 @@ def makeService(config):
 
     portal = Portal(GitRealm(mgr))
     portal.registerChecker(GitPublicKeyChecker(mgr))
-
 
     # factory.SSHFactory takes no arguments, so unlike the
     # websocket server, we will assign portal on the class
