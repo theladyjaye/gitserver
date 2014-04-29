@@ -45,8 +45,7 @@ def authorize(model, command, path):
         You should NEVER use this example in production code. EVER.
 
     .. note::
-        In our example, everyone is authorized, so we return True.
-        Again, this is wide open, you probably don't want this.
+        In our example, no one is authorized, so we return False.
     """
 
     key = {
