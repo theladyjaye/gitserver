@@ -1,4 +1,4 @@
-PyYAML==3.10
+PyYAML==5.4
 Twisted==13.2.0
 stevedore==0.14.1
 pyasn1==0.1.7
